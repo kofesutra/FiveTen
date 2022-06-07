@@ -5,14 +5,14 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 
-class YouLoose : DialogFragment() {
+class WinWin : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
             val builder = AlertDialog.Builder(it)
-            builder.setTitle("Вы проиграли")
-                .setMessage("Андрюша сегодня поудачливее ;)")
+            builder.setTitle("Ничья!")
+                .setMessage("Тоже неплохо ;)")
 //                .setIcon(R.drawable.ic_baseline_all_out_24)
-                .setPositiveButton("Понятненько") {
+                .setPositiveButton("Океюшки") {
                         dialog, _ ->  dialog.cancel()
                 }
 //                .setNegativeButton("Непонятно") {

@@ -18,16 +18,18 @@ fun twoThreeAndr(){
         if (listOfNulls.size > 0) {
             for (i in 0 until listOfNulls.size){
                 val random = (1..6).shuffled()
+                val nullVal = listOfNulls[i]
                 var randomValue: Int = random[0]
+                valuesListDraw[nullVal] = randomValue // Копируем значения в лист для отображения картинок
+
                 when (randomValue) {
                     1 -> randomValue = 10
                     in 2..4 -> randomValue = 0
                     6 -> randomValue = 0
 //                    else -> randomValue
                 }
-                println("$randomValue")
-                val nullVal = listOfNulls[i]
-//                valuesList.set(nullVal, randomValue)
+//                println("$randomValue")
+
                 valuesListAndr[nullVal] = randomValue
             }
         }// if (valuesList.contains(0))

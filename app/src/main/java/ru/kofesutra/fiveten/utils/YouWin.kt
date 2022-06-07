@@ -14,7 +14,7 @@ class YouWin : DialogFragment() {
                 .setMessage("Крутенько, да? ;)")
 //                .setIcon(R.drawable.ic_baseline_all_out_24)
                 .setPositiveButton("Зашибись!") {
-                        dialog, id ->  dialog.cancel()
+                        dialog, _ ->  dialog.cancel()
                 }
 //                .setNegativeButton("Непонятно") {
 //                        dialog, id ->  Toast.makeText(activity, "Штош, попробуйте ещё раз", Toast.LENGTH_SHORT).show()

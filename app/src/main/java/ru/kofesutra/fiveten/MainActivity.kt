@@ -6,24 +6,23 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import com.bumptech.glide.Glide
 import ru.kofesutra.fiveten.databinding.ActivityMainBinding
+import ru.kofesutra.fiveten.utils.WinWin
 import ru.kofesutra.fiveten.utils.YouLoose
 import ru.kofesutra.fiveten.utils.YouWin
 
-var buttonCount = 0
+var attemptNumber = 0
 var valuesList = mutableListOf(0, 0, 0, 0, 0)
-val myValuesList = mutableListOf(0, 0, 0, 0, 0)
-val myValuesListDraw = mutableListOf(0, 0, 0, 0, 0)
+var myValuesList = mutableListOf(0, 0, 0, 0, 0)
+var valuesListDraw = mutableListOf(0, 0, 0, 0, 0)
 var myResultNow = 0
 var myResultTotal = 0
-val valuesListAndr = mutableListOf(0, 0, 0, 0, 0)
+var valuesListAndr = mutableListOf(0, 0, 0, 0, 0)
 var andrResultNow = 0
 var andrResultTotal = 0
-val mySummaryList = mutableListOf(0)
-val summaryListAndr = mutableListOf(0)
+var mySummaryList = mutableListOf(0)
+var summaryListAndr = mutableListOf(0)
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -33,8 +32,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        dice1Draw.
-
         binding.myScoresNow.text = myResultNow.toString()
         binding.myScoresTotal.text = "0"
         binding.andrScoresNow.text = "0"
@@ -42,112 +39,63 @@ class MainActivity : AppCompatActivity() {
         binding.message1.text = "Сделайте бросок"
 //        binding.message2.text = "У Вас три попытки"
 
-        binding.dice1.text = valuesList[0].toString()
-        binding.dice2.text = valuesList[1].toString()
-        binding.dice3.text = valuesList[2].toString()
-        binding.dice4.text = valuesList[3].toString()
-        binding.dice5.text = valuesList[4].toString()
+        Glide.with(this).load(R.drawable.d1).override(180, 180).into(binding.dice1Draw)
+        Glide.with(this).load(R.drawable.d2).override(180, 180).into(binding.dice2Draw)
+        Glide.with(this).load(R.drawable.d3).override(180, 180).into(binding.dice3Draw)
+        Glide.with(this).load(R.drawable.d4).override(180, 180).into(binding.dice4Draw)
+        Glide.with(this).load(R.drawable.d5).override(180, 180).into(binding.dice5Draw)
 
-        buttonCount = 0
+        bindDices()
 
             binding.button.setOnClickListener {
-                if (buttonCount == 0) {
-                    valuesList = myValuesList
-                    binding.button.text = "Ещё бросок!"
-//                    binding.message2.text = "1-й из 3"
-                    one()
-                    binding.dice1.text = valuesList[0].toString()
-                    binding.dice2.text = valuesList[1].toString()
-                    binding.dice3.text = valuesList[2].toString()
-                    binding.dice4.text = valuesList[3].toString()
-                    binding.dice5.text = valuesList[4].toString()
-                    binding.myScoresNow.text = myResultNow.toString()
-                    buttonCount++
-                } else if (buttonCount == 1) {
-                    binding.button.text = "И ещё один!"
-//                    binding.message2.text = "2-й из 3"
-                    twoThree()
-                    binding.dice1.text = valuesList[0].toString()
-                    binding.dice2.text = valuesList[1].toString()
-                    binding.dice3.text = valuesList[2].toString()
-                    binding.dice4.text = valuesList[3].toString()
-                    binding.dice5.text = valuesList[4].toString()
-                    binding.myScoresNow.text = myResultNow.toString()
-                    buttonCount++
-                } else if (buttonCount == 2) {
-                    binding.button.text = "Играет Андрюша"
-//                    binding.message2.text = "3-й из 3"
-                    buttonCount++
-                    twoThree()
-                    binding.dice1.text = valuesList[0].toString()
-                    binding.dice2.text = valuesList[1].toString()
-                    binding.dice3.text = valuesList[2].toString()
-                    binding.dice4.text = valuesList[3].toString()
-                    binding.dice5.text = valuesList[4].toString()
-                    binding.myScoresNow.text = myResultNow.toString()
-                    binding.myScoresTotal.text = myResultTotal.toString()
-                    binding.message1.text = "Все броски сделаны"
-                } else if (buttonCount == 3){
-                    binding.button.text = "Бросок!"
-
-        // ----- Играет Андрюша -----
-                    valuesList = valuesListAndr
-
-                    oneAndr()
-                    pauseFun()
-
-                    binding.dice1.text = valuesList[0].toString()
-                    binding.dice2.text = valuesList[1].toString()
-                    binding.dice3.text = valuesList[2].toString()
-                    binding.dice4.text = valuesList[3].toString()
-                    binding.dice5.text = valuesList[4].toString()
-                    binding.andrScoresNow.text = andrResultNow.toString()
-
-                    twoThreeAndr()
-                    pauseFun()
-
-                    binding.dice1.text = valuesList[0].toString()
-                    binding.dice2.text = valuesList[1].toString()
-                    binding.dice3.text = valuesList[2].toString()
-                    binding.dice4.text = valuesList[3].toString()
-                    binding.dice5.text = valuesList[4].toString()
-                    binding.andrScoresNow.text = andrResultNow.toString()
-
-                    twoThreeAndr()
-                    andrCountTotal()
-
-                    binding.dice1.text = valuesList[0].toString()
-                    binding.dice2.text = valuesList[1].toString()
-                    binding.dice3.text = valuesList[2].toString()
-                    binding.dice4.text = valuesList[3].toString()
-                    binding.dice5.text = valuesList[4].toString()
-                    binding.andrScoresNow.text = andrResultNow.toString()
-                    binding.andrScoresTotal.text = andrResultTotal.toString()
-
-        // End of ----- Играет Андрюша -----
-
-                    binding.message1.text = "Сделайте бросок"
-                    buttonCount = 0
-
-                    // ------ Итоги -----
-                    if (myResultTotal > 100 || andrResultTotal > 100){
-                        if (myResultTotal > andrResultTotal) {
-                            val dialogFragmentHere = YouWin()
-                            val manager = supportFragmentManager
-                            dialogFragmentHere.show(manager, "youwin")
-                        } else
-                        {
-                            val dialogFragmentHere = YouLoose()
-                            val manager = supportFragmentManager
-                            dialogFragmentHere.show(manager, "youloose")
-                        }
+                when (attemptNumber) {
+                    0 -> {
+                        valuesList = myValuesList
+                        binding.button.text = "Ещё бросок!"
+                        one()
+                        bindDicesImage()
+                        bindDices()
+                        attemptNumber++
                     }
-                    // End of ------ Итоги -----
+                    1 -> {
+                        binding.button.text = "И ещё один!"
+                        twoThree()
+                        bindDicesImage()
+                        bindDices()
+                        attemptNumber++
+                    }
+                    2 -> {
+                        binding.button.text = "Дать поиграть Андрюше"
+                        attemptNumber++
+                        twoThree()
+                        bindDicesImage()
+                        bindDices()
+                        binding.message1.text = "Все броски сделаны"
+                    }
+                    3 -> {
+                        binding.button.text = "Бросок!"
+                        // ----- Играет Андрюша -----
+                        valuesList = valuesListAndr
+                        oneAndr()
+                        bindDicesImage()
+                        bindDices()
+                        twoThreeAndr()
+                        bindDicesImage()
+                        bindDices()
+                        twoThreeAndr()
+                        bindDicesImage()
+                        andrCountTotal()
+                        bindDices()
+                        // End of ----- Играет Андрюша -----
+                        binding.message1.text = "Сделайте бросок"
+                        attemptNumber = 0
+                        gameResult()
+                    }
                 }// - else if (buttonCount == 3)
 
-//                    pauseFun()
 
             } // - binding.button.setOnClickListener
+
         supportActionBar?.apply {
             title = "FiveTen" // Меняет название активити
 //            setDisplayHomeAsUpEnabled(true) // Back button
@@ -157,11 +105,85 @@ class MainActivity : AppCompatActivity() {
         }
 } // OnCreate
 
+    private fun bindDices(){
+//        binding.dice1.text = valuesList[0].toString()
+//        binding.dice2.text = valuesList[1].toString()
+//        binding.dice3.text = valuesList[2].toString()
+//        binding.dice4.text = valuesList[3].toString()
+//        binding.dice5.text = valuesList[4].toString()
+        binding.myScoresNow.text = myResultNow.toString()
+        binding.andrScoresNow.text = andrResultNow.toString()
+        binding.myScoresTotal.text = myResultTotal.toString()
+        binding.andrScoresTotal.text = andrResultTotal.toString()
+    }
+
+    private fun bindDicesImage(){
+        // ----- Заполнение картинками -----
+        var diceDrawTemp = 0
+        for (i in 0..4) {
+            when (valuesListDraw[i]) {
+                1 -> diceDrawTemp = R.drawable.d1
+                2 -> diceDrawTemp = R.drawable.d2
+                3 -> diceDrawTemp = R.drawable.d3
+                4 -> diceDrawTemp = R.drawable.d4
+                5 -> diceDrawTemp = R.drawable.d5
+                6 -> diceDrawTemp = R.drawable.d6
+            }
+
+            when (i) {
+                0 -> Glide.with(this).load(diceDrawTemp).override(180, 180).into(binding.dice1Draw)
+                1 -> Glide.with(this).load(diceDrawTemp).override(180, 180).into(binding.dice2Draw)
+                2 -> Glide.with(this).load(diceDrawTemp).override(180, 180).into(binding.dice3Draw)
+                3 -> Glide.with(this).load(diceDrawTemp).override(180, 180).into(binding.dice4Draw)
+                4 -> Glide.with(this).load(diceDrawTemp).override(180, 180).into(binding.dice5Draw)
+            }
+        } // End of ----- Заполнение картинками -----
+    }
+
+    private fun gameResult(){
+        // ------ Итоги -----
+        if (myResultTotal >= 100 || andrResultTotal >= 100){
+            if (myResultTotal > andrResultTotal) {
+                val dialogFragmentHere = YouWin()
+                val manager = supportFragmentManager
+                dialogFragmentHere.show(manager, "youwin")
+                resetAll()
+            } else if (myResultTotal < andrResultTotal)
+            {
+                val dialogFragmentHere = YouLoose()
+                val manager = supportFragmentManager
+                dialogFragmentHere.show(manager, "youloose")
+                resetAll()
+            } else if (myResultTotal == andrResultTotal)
+            {
+                val dialogFragmentHere = WinWin()
+                val manager = supportFragmentManager
+                dialogFragmentHere.show(manager, "winwin")
+                resetAll()
+            }
+        }
+    }
+
+    private fun resetAll(){
+        attemptNumber = 0
+        valuesList = mutableListOf(0, 0, 0, 0, 0)
+        myValuesList = mutableListOf(0, 0, 0, 0, 0)
+        valuesListDraw = mutableListOf(0, 0, 0, 0, 0)
+        myResultNow = 0
+        myResultTotal = 0
+        valuesListAndr = mutableListOf(0, 0, 0, 0, 0)
+        andrResultNow = 0
+        andrResultTotal = 0
+        mySummaryList = mutableListOf(0)
+        summaryListAndr = mutableListOf(0)
+        bindDices()
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
-    } // - override fun onCreateOptionsMenu
+    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -171,15 +193,18 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 return true
             }
+            R.id.exit -> {
+                Toast.makeText(applicationContext, "Пока всем!", Toast.LENGTH_SHORT).show()
+                quitApp()
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
-    } // - override fun onOptionsItemSelected
+    }
+
+    private fun quitApp() {
+        this@MainActivity.finish()
+        finish()
+    }
 
 } //
-
-
-fun pauseFun() = runBlocking { // this: CoroutineScope
-    launch { // launch a new coroutine and continue
-        delay(500) // non-blocking delay for 3 second (default time unit is ms)
-        println("Всйо") // print after delay
-    }}

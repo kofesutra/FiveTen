@@ -11,7 +11,6 @@ fun twoThreeAndr(){
         for( z in 0 until valuesListAndr.size) {
             val indexOfVal = valuesListAndr[z]
             if (indexOfVal == 0) {
-                // Добавляем в список индексов значения
                 listOfNulls.add(z)
             }
         }
@@ -20,16 +19,13 @@ fun twoThreeAndr(){
                 val random = (1..6).shuffled()
                 val nullVal = listOfNulls[i]
                 var randomValue: Int = random[0]
-                valuesListDraw[nullVal] = randomValue // Копируем значения в лист для отображения картинок
+                valuesListDraw[nullVal] = randomValue
 
                 when (randomValue) {
                     1 -> randomValue = 10
                     in 2..4 -> randomValue = 0
                     6 -> randomValue = 0
-//                    else -> randomValue
                 }
-//                println("$randomValue")
-
                 valuesListAndr[nullVal] = randomValue
             }
         }// if (valuesList.contains(0))
@@ -37,15 +33,10 @@ fun twoThreeAndr(){
     }else{
         println("Нет необходимости в броске")
     }
-
-//
-
-}// fun twoThree
+}
 
 fun andrCountTotal(){
-//    if (andrDropsCount == true) {
         summaryListAndr.add(0, andrResultNow)
-        Log.d(ContentValues.TAG, "Андрюшин итог: $summaryListAndr")
+//        Log.d(ContentValues.TAG, "Андрюшин итог: $summaryListAndr")
         andrResultTotal = summaryListAndr.sum()
-//    }
 }

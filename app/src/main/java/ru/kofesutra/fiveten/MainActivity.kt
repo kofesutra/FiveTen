@@ -39,11 +39,11 @@ class MainActivity : AppCompatActivity() {
         binding.message1.text = "Сделайте бросок"
 //        binding.message2.text = "У Вас три попытки"
 
-        Glide.with(this).load(R.drawable.d1).override(180, 180).into(binding.dice1Draw)
-        Glide.with(this).load(R.drawable.d2).override(180, 180).into(binding.dice2Draw)
-        Glide.with(this).load(R.drawable.d3).override(180, 180).into(binding.dice3Draw)
-        Glide.with(this).load(R.drawable.d4).override(180, 180).into(binding.dice4Draw)
-        Glide.with(this).load(R.drawable.d5).override(180, 180).into(binding.dice5Draw)
+        Glide.with(this).load(R.drawable.dd1).override(180, 180).into(binding.dice1Draw)
+        Glide.with(this).load(R.drawable.dd2).override(180, 180).into(binding.dice2Draw)
+        Glide.with(this).load(R.drawable.dd3).override(180, 180).into(binding.dice3Draw)
+        Glide.with(this).load(R.drawable.dd4).override(180, 180).into(binding.dice4Draw)
+        Glide.with(this).load(R.drawable.dd5).override(180, 180).into(binding.dice5Draw)
 
         bindDices()
 
@@ -100,7 +100,7 @@ class MainActivity : AppCompatActivity() {
             title = "FiveTen" // Меняет название активити
 //            setDisplayHomeAsUpEnabled(true) // Back button
             setDisplayShowHomeEnabled(true) // -||-
-            setLogo(R.drawable.d5) // Показывать лого на баре
+            setLogo(R.drawable.dd5) // Показывать лого на баре
             setDisplayUseLogoEnabled(true) // -||-
         }
 } // OnCreate
@@ -122,16 +122,18 @@ class MainActivity : AppCompatActivity() {
         var diceDrawTemp = 0
         for (i in 0..4) {
             when (valuesListDraw[i]) {
-                1 -> diceDrawTemp = R.drawable.d1
-                2 -> diceDrawTemp = R.drawable.d2
-                3 -> diceDrawTemp = R.drawable.d3
-                4 -> diceDrawTemp = R.drawable.d4
-                5 -> diceDrawTemp = R.drawable.d5
-                6 -> diceDrawTemp = R.drawable.d6
+                1 -> diceDrawTemp = R.drawable.dd1
+                2 -> diceDrawTemp = R.drawable.dd2
+                3 -> diceDrawTemp = R.drawable.dd3
+                4 -> diceDrawTemp = R.drawable.dd4
+                5 -> diceDrawTemp = R.drawable.dd5
+                6 -> diceDrawTemp = R.drawable.dd6
             }
-
             when (i) {
-                0 -> Glide.with(this).load(diceDrawTemp).override(180, 180).into(binding.dice1Draw)
+                0 -> {
+//                    Glide.with(this).asGif().load(R.drawable.ft).override(180, 180).into(binding.dice1Draw)
+                        Glide.with(this).load(diceDrawTemp).override(180, 180).into(binding.dice1Draw)
+                }
                 1 -> Glide.with(this).load(diceDrawTemp).override(180, 180).into(binding.dice2Draw)
                 2 -> Glide.with(this).load(diceDrawTemp).override(180, 180).into(binding.dice3Draw)
                 3 -> Glide.with(this).load(diceDrawTemp).override(180, 180).into(binding.dice4Draw)

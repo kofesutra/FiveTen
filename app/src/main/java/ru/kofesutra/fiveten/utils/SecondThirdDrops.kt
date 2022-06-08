@@ -27,9 +27,6 @@ fun twoThree(){
                     6 -> randomValue = 0
 //                    else -> randomValue
                 }
-//                println("$randomValue")
-
-//                valuesList.set(nullVal, randomValue)
                 myValuesList[nullVal] = randomValue
             }
         }// if (valuesList.contains(0))
@@ -40,7 +37,7 @@ fun twoThree(){
 
     if (attemptNumber == 3) {
         mySummaryList.add(0, myResultNow)
-        Log.d(TAG, "Мой итог: $mySummaryList")
+//        Log.d(TAG, "Мой итог: $mySummaryList")
         myResultTotal = mySummaryList.sum()
     }
 }// fun twoThree

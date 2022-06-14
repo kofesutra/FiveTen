@@ -106,56 +106,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/dice1"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="32dp"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:text="1"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/textView15" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/dice2"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:text="2"-->
-<!--        app:layout_constraintEnd_toStartOf="@+id/dice3"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/dice1"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/textView15" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/dice3"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:text="3"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/textView15" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/dice4"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:text="4"-->
-<!--        app:layout_constraintEnd_toStartOf="@+id/dice5"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/dice3"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/textView15" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/dice5"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:layout_marginEnd="32dp"-->
-<!--        android:text="5"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/textView15" />-->
-
     <Button
         android:id="@+id/button"
         android:layout_width="0dp"
@@ -163,8 +113,10 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
-        android:text="Бросок!"
         android:backgroundTint="@color/orange"
+        android:elevation="16dp"
+        android:text="Бросок!"
+        app:cornerRadius="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

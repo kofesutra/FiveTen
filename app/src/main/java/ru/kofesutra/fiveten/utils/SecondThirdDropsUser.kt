@@ -1,12 +1,10 @@
-package ru.kofesutra.fiveten
+package ru.kofesutra.fiveten.utils
 
-import android.content.ContentValues.TAG
-import android.util.Log
+import ru.kofesutra.fiveten.*
 
-fun twoThree(){
-
+// Получаем индексы значений "0" чтобы перебросить только эти кости
+fun secondThirdDropsUser(){
     val listOfNulls = mutableListOf<Int>()
-
     if (myValuesList.contains(0)){
         for( z in 0 until myValuesList.size) {
             val indexOfVal = myValuesList[z]
@@ -25,7 +23,6 @@ fun twoThree(){
                     1 -> randomValue = 10
                     in 2..4 -> randomValue = 0
                     6 -> randomValue = 0
-//                    else -> randomValue
                 }
                 myValuesList[nullVal] = randomValue
             }
@@ -37,8 +34,7 @@ fun twoThree(){
 
     if (attemptNumber == 3) {
         mySummaryList.add(0, myResultNow)
-//        Log.d(TAG, "Мой итог: $mySummaryList")
         myResultTotal = mySummaryList.sum()
     }
-}// fun twoThree
+}
 

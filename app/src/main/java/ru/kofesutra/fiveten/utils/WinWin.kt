@@ -11,13 +11,9 @@ class WinWin : DialogFragment() {
             val builder = AlertDialog.Builder(it)
             builder.setTitle("Ничья!")
                 .setMessage("Тоже неплохо ;)")
-//                .setIcon(R.drawable.ic_baseline_all_out_24)
                 .setPositiveButton("Океюшки") {
                         dialog, _ ->  dialog.cancel()
                 }
-//                .setNegativeButton("Непонятно") {
-//                        dialog, id ->  Toast.makeText(activity, "Штош, попробуйте ещё раз", Toast.LENGTH_SHORT).show()
-//                }
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
     }

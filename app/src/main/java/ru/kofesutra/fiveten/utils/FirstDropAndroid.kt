@@ -1,6 +1,10 @@
-package ru.kofesutra.fiveten
+package ru.kofesutra.fiveten.utils
 
-fun oneAndr() {
+import ru.kofesutra.fiveten.andrResultNow
+import ru.kofesutra.fiveten.valuesListAndr
+import ru.kofesutra.fiveten.valuesListDraw
+
+fun firstDropAndroid() {
     for (i in 0..4) {
         val random = (1..6).shuffled()
         var randomValue: Int = random[0]

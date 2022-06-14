@@ -1,33 +1,38 @@
 package ru.kofesutra.fiveten
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.bumptech.glide.Glide
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import ru.kofesutra.fiveten.databinding.ActivityMainBinding
-import ru.kofesutra.fiveten.utils.WinWin
-import ru.kofesutra.fiveten.utils.YouLoose
-import ru.kofesutra.fiveten.utils.YouWin
+import ru.kofesutra.fiveten.databinding.BottomSheetBinding
+import ru.kofesutra.fiveten.utils.*
 
 var attemptNumber = 0
 var valuesList = mutableListOf(0, 0, 0, 0, 0)
-var myValuesList = mutableListOf(0, 0, 0, 0, 0)
 var valuesListDraw = mutableListOf(0, 0, 0, 0, 0)
+var myValuesList = mutableListOf(0, 0, 0, 0, 0)
+var mySummaryList = mutableListOf(0)
 var myResultNow = 0
 var myResultTotal = 0
 var valuesListAndr = mutableListOf(0, 0, 0, 0, 0)
+var summaryListAndr = mutableListOf(0)
 var andrResultNow = 0
 var andrResultTotal = 0
-var mySummaryList = mutableListOf(0)
-var summaryListAndr = mutableListOf(0)
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+//    val splashScreen = installSplashScreen()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -45,79 +50,80 @@ class MainActivity : AppCompatActivity() {
         Glide.with(this).load(R.drawable.dd4).override(180, 180).into(binding.dice4Draw)
         Glide.with(this).load(R.drawable.dd5).override(180, 180).into(binding.dice5Draw)
 
-        bindDices()
+        bindDicesResults()
 
             binding.button.setOnClickListener {
                 when (attemptNumber) {
                     0 -> {
                         valuesList = myValuesList
                         binding.button.text = "Ещё бросок!"
-                        one()
-                        bindDicesImage()
-                        bindDices()
+                        firstDropUser()
+                        bindDicesImages()
+                        bindDicesResults()
                         attemptNumber++
                     }
                     1 -> {
                         binding.button.text = "И ещё один!"
-                        twoThree()
-                        bindDicesImage()
-                        bindDices()
+                        secondThirdDropsUser()
+                        bindDicesImages()
+                        bindDicesResults()
                         attemptNumber++
                     }
                     2 -> {
                         binding.button.text = "Дать поиграть Андрюше"
                         attemptNumber++
-                        twoThree()
-                        bindDicesImage()
-                        bindDices()
+                        secondThirdDropsUser()
+                        bindDicesImages()
+                        bindDicesResults()
                         binding.message1.text = "Все броски сделаны"
                     }
                     3 -> {
                         binding.button.text = "Бросок!"
                         // ----- Играет Андрюша -----
                         valuesList = valuesListAndr
-                        oneAndr()
-                        bindDicesImage()
-                        bindDices()
-                        twoThreeAndr()
-                        bindDicesImage()
-                        bindDices()
-                        twoThreeAndr()
-                        bindDicesImage()
+                        showPopupBottomSheet()
+                        firstDropAndroid()
+                        secondThirdDropsAndroid()
+                        secondThirdDropsAndroid()
+                        bindDicesImages()
                         andrCountTotal()
-                        bindDices()
+                        bindDicesResults()
                         // End of ----- Играет Андрюша -----
                         binding.message1.text = "Сделайте бросок"
                         attemptNumber = 0
                         gameResult()
                     }
                 }// - else if (buttonCount == 3)
-
-
             } // - binding.button.setOnClickListener
 
         supportActionBar?.apply {
             title = "FiveTen" // Меняет название активити
-//            setDisplayHomeAsUpEnabled(true) // Back button
             setDisplayShowHomeEnabled(true) // -||-
             setLogo(R.drawable.dd5) // Показывать лого на баре
             setDisplayUseLogoEnabled(true) // -||-
         }
 } // OnCreate
 
-    private fun bindDices(){
-//        binding.dice1.text = valuesList[0].toString()
-//        binding.dice2.text = valuesList[1].toString()
-//        binding.dice3.text = valuesList[2].toString()
-//        binding.dice4.text = valuesList[3].toString()
-//        binding.dice5.text = valuesList[4].toString()
+    private fun showPopupBottomSheet(){
+        val dialog = BottomSheetDialog(this)
+        val view = BottomSheetBinding.inflate(layoutInflater)
+        dialog.setCancelable(false)
+        dialog.setContentView(view.root)
+        dialog.show()
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            dialog.dismiss()
+        }, 2000)
+    }
+
+    private fun bindDicesResults(){
         binding.myScoresNow.text = myResultNow.toString()
         binding.andrScoresNow.text = andrResultNow.toString()
         binding.myScoresTotal.text = myResultTotal.toString()
         binding.andrScoresTotal.text = andrResultTotal.toString()
     }
 
-    private fun bindDicesImage(){
+    private fun bindDicesImages(){
         // ----- Заполнение картинками -----
         var diceDrawTemp = 0
         for (i in 0..4) {
@@ -130,10 +136,7 @@ class MainActivity : AppCompatActivity() {
                 6 -> diceDrawTemp = R.drawable.dd6
             }
             when (i) {
-                0 -> {
-//                    Glide.with(this).asGif().load(R.drawable.ft).override(180, 180).into(binding.dice1Draw)
-                        Glide.with(this).load(diceDrawTemp).override(180, 180).into(binding.dice1Draw)
-                }
+                0 -> Glide.with(this).load(diceDrawTemp).override(180, 180).into(binding.dice1Draw)
                 1 -> Glide.with(this).load(diceDrawTemp).override(180, 180).into(binding.dice2Draw)
                 2 -> Glide.with(this).load(diceDrawTemp).override(180, 180).into(binding.dice3Draw)
                 3 -> Glide.with(this).load(diceDrawTemp).override(180, 180).into(binding.dice4Draw)
@@ -178,7 +181,7 @@ class MainActivity : AppCompatActivity() {
         andrResultTotal = 0
         mySummaryList = mutableListOf(0)
         summaryListAndr = mutableListOf(0)
-        bindDices()
+        bindDicesResults()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -208,5 +211,4 @@ class MainActivity : AppCompatActivity() {
         this@MainActivity.finish()
         finish()
     }
-
 } //

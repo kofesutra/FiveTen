@@ -1,9 +1,8 @@
-package ru.kofesutra.fiveten
+package ru.kofesutra.fiveten.utils
 
-import android.content.ContentValues
-import android.util.Log
+import ru.kofesutra.fiveten.*
 
-fun twoThreeAndr(){
+fun secondThirdDropsAndroid(){
 
     val listOfNulls = mutableListOf<Int>()
 
@@ -37,6 +36,5 @@ fun twoThreeAndr(){
 
 fun andrCountTotal(){
         summaryListAndr.add(0, andrResultNow)
-//        Log.d(ContentValues.TAG, "Андрюшин итог: $summaryListAndr")
         andrResultTotal = summaryListAndr.sum()
 }

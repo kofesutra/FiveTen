@@ -11,13 +11,9 @@ class YouLoose : DialogFragment() {
             val builder = AlertDialog.Builder(it)
             builder.setTitle("Вы проиграли")
                 .setMessage("Андрюша сегодня поудачливее ;)")
-//                .setIcon(R.drawable.ic_baseline_all_out_24)
                 .setPositiveButton("Понятненько") {
                         dialog, _ ->  dialog.cancel()
                 }
-//                .setNegativeButton("Непонятно") {
-//                        dialog, id ->  Toast.makeText(activity, "Штош, попробуйте ещё раз", Toast.LENGTH_SHORT).show()
-//                }
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
     }

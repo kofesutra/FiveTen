@@ -1,6 +1,14 @@
-package ru.kofesutra.fiveten
+package ru.kofesutra.fiveten.utils
 
-fun one() {
+import ru.kofesutra.fiveten.myResultNow
+import ru.kofesutra.fiveten.myValuesList
+import ru.kofesutra.fiveten.valuesListDraw
+
+// Бросок пяти костей
+// В valuesListDraw вносятся значения от 1 до 6 для отображения изображений костей
+// в myValuesList вносятся только 5, 10 и 0 для подсчёта итогов
+
+fun firstDropUser() {
     for (i in 0..4) {
         val random = (1..6).shuffled()
         // если значение 5, сохраняем, если 1, то меняем на 10, остальные делаем нулями
@@ -14,5 +22,5 @@ fun one() {
         myValuesList[i] = randomValue // Записываем результат в основной список valuesList
     } // for (i in 0..4)
     myResultNow = myValuesList.sum()
-} // fun one
+}
 

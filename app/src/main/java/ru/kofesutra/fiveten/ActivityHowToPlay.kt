@@ -12,7 +12,7 @@ class ActivityHowToPlay : AppCompatActivity() {
         binding = ActivityHowToPlayBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val rules = "Правила игры\n" +
+        val rules = "Правила игры:\n" +
                 "\n" +
                 "На один ход даётся три броска костей\n" +
                 "\n" +
@@ -36,8 +36,6 @@ class ActivityHowToPlay : AppCompatActivity() {
 	        setLogo(R.drawable.dd5) // Показывать лого на баре
 	        setDisplayUseLogoEnabled(true) // -||-
         }
-
-
     }
 
     override fun onSupportNavigateUp(): Boolean {

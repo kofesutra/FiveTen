@@ -12,7 +12,7 @@
         <activity
             android:name=".ActivityHowToPlay"
             android:theme="@style/Theme.AppCompat"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

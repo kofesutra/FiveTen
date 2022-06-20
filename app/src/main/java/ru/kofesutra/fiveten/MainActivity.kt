@@ -29,7 +29,6 @@ var andrResultTotal = 0
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-//    val splashScreen = installSplashScreen()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -193,13 +192,13 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.howto -> {
-                Toast.makeText(applicationContext, "Обо!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "About!", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, ActivityHowToPlay::class.java)
                 startActivity(intent)
                 return true
             }
             R.id.exit -> {
-                Toast.makeText(applicationContext, "Пока всем!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Bye-bye!", Toast.LENGTH_SHORT).show()
                 quitApp()
                 return true
             }

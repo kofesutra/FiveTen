@@ -7,24 +7,24 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/MyResults"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Мои результаты:"
+        android:text="@string/my_results"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/resultsNow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        android:text="Сейчас:"
+        android:text="@string/my_results_now"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+        app:layout_constraintTop_toBottomOf="@+id/MyResults" />
 
     <TextView
         android:id="@+id/myScoresNow"
@@ -32,19 +32,18 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+        app:layout_constraintStart_toEndOf="@+id/resultsNow"
+        app:layout_constraintTop_toBottomOf="@+id/MyResults" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/myResultsTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:text="Всего:"
+        android:text="@string/my_results_total"
         app:layout_constraintEnd_toStartOf="@+id/myScoresTotal"
-        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+        app:layout_constraintTop_toBottomOf="@+id/MyResults" />
 
     <TextView
         android:id="@+id/myScoresTotal"
@@ -52,29 +51,28 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+        app:layout_constraintTop_toBottomOf="@+id/MyResults" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/androidResults"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Результаты Андроида:"
+        android:text="@string/android_results"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myScoresNow" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/androidResultsNow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        android:text="Сейчас:"
+        android:text="@string/android_results_now"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintTop_toBottomOf="@+id/androidResults" />
 
     <TextView
         android:id="@+id/andrScoresNow"
@@ -82,19 +80,18 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/textView15"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintStart_toEndOf="@+id/androidResultsNow"
+        app:layout_constraintTop_toBottomOf="@+id/androidResults" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/androidResultsTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:text="Всего:"
+        android:text="@string/android_results_total"
         app:layout_constraintEnd_toStartOf="@+id/andrScoresTotal"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintTop_toBottomOf="@+id/androidResults" />
 
     <TextView
         android:id="@+id/andrScoresTotal"
@@ -102,9 +99,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintTop_toBottomOf="@+id/androidResults" />
 
     <Button
         android:id="@+id/button"
@@ -115,7 +111,7 @@
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/orange"
         android:elevation="16dp"
-        android:text="Бросок!"
+        android:text="@string/drop_button"
         app:cornerRadius="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -135,7 +131,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="TextView"
+        android:text="@string/message_one"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -147,8 +143,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15"
-        app:srcCompat="@drawable/dd1" />
+        app:layout_constraintTop_toBottomOf="@+id/androidResultsNow"
+        app:srcCompat="@drawable/dd1"
+        tools:ignore="ContentDescription"/>
 
     <ImageView
         android:id="@+id/dice2Draw"
@@ -157,8 +154,9 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toStartOf="@+id/dice3Draw"
         app:layout_constraintStart_toEndOf="@+id/dice1Draw"
-        app:layout_constraintTop_toBottomOf="@+id/textView15"
-        app:srcCompat="@drawable/dd1" />
+        app:layout_constraintTop_toBottomOf="@+id/androidResultsNow"
+        app:srcCompat="@drawable/dd1"
+        tools:ignore="ContentDescription"/>
 
     <ImageView
         android:id="@+id/dice3Draw"
@@ -167,8 +165,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15"
-        app:srcCompat="@drawable/dd1" />
+        app:layout_constraintTop_toBottomOf="@+id/androidResultsNow"
+        app:srcCompat="@drawable/dd1"
+        tools:ignore="ContentDescription"/>
 
     <ImageView
         android:id="@+id/dice4Draw"
@@ -179,7 +178,8 @@
         app:layout_constraintEnd_toStartOf="@+id/message2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dice1Draw"
-        app:srcCompat="@drawable/dd1" />
+        app:srcCompat="@drawable/dd1"
+        tools:ignore="ContentDescription"/>
 
     <ImageView
         android:id="@+id/dice5Draw"
@@ -190,7 +190,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/message2"
         app:layout_constraintTop_toBottomOf="@+id/dice1Draw"
-        app:srcCompat="@drawable/dd1" />
+        app:srcCompat="@drawable/dd1"
+        tools:ignore="ContentDescription"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,4 +2,12 @@
     <string name="app_name">FiveTen</string>
     <string name="how_to_play">HowToPlay</string>
     <string name="exit_game">Exit</string>
+    <string name="my_results">Мои результаты</string>
+    <string name="my_results_now">Сейчас:</string>
+    <string name="my_results_total">Всего:</string>
+    <string name="android_results">Результаты Андрюши</string>
+    <string name="android_results_now">Сейчас:</string>
+    <string name="android_results_total">Всего:</string>
+    <string name="drop_button">Бросок!</string>
+    <string name="message_one">Text</string>
 </resources>

@@ -11,7 +11,7 @@
         android:screenOrientation="portrait">
         <activity
             android:name=".ActivityHowToPlay"
-            android:theme="@style/Theme.AppCompat"
+            android:theme="@style/Theme.FiveTen"
             android:exported="false"/>
         <activity
             android:name=".MainActivity"
